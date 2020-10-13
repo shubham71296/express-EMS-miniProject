@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style type="text/css">
+    .container{
+      margin-top: 80px;
+      width: 500px;
+    }
+    .error{
+      margin-top: -12px;
+      color: red;
+    }
+
+  </style>
+</head>
+<body>
+
+
+<div class="container">
+  <h3 style="color: grey">EMS Login Page....</h3> 
+  {{#if msg}}
+    <div class="alert alert-danger">
+      <strong>{{msg}}</strong>
+    </div>
+  {{/if}}
+  <form action="/loginsubmit" method="post">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" value="{{user.email}}" name="email">
+    </div>
+     {{#if errors.email}}
+         <p class="error">{{errors.email.msg}}</p>
+     {{/if}}
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" value="{{user.pwd}}" name="pwd">
+    </div>
+     {{#if errors.pwd}}
+         <p class="error">{{errors.pwd.msg}}</p>
+     {{/if}}
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
+ 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
